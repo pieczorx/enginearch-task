@@ -13,11 +13,11 @@ import {
     interface Props {
         isTransparent?: boolean
         placement?: Placement
-        isOpen?: boolean
+        isOpen?: boolean|null
         matchReferenceSize?: boolean
         offsetMainAxis?: number
         offsetCrossAxis?: number
-        dropdownClass?: string
+        dropdownClass?: string|null
         alignment?: Alignment
         minimalAcceptableHeight?: number
         placementStrategy?: 'autoPlacement' | 'flip'
@@ -41,26 +41,14 @@ const props = withDefaults(defineProps<Props>(), {
 })
 const emit = defineEmits<Emits>()
 
-const dropdownRef = $ref<HTMLElement>(null)
-const referenceRef = $ref<HTMLElement>(null)
+const dropdownRef = $ref<HTMLElement|null>(null)
+const referenceRef = $ref<HTMLElement|null>(null)
 
-let isOpen = $ref<boolean>(props.isOpen)
+let isOpen = $ref<boolean|null>(props.isOpen)
 
 watch(() => props.isOpen, (value) => {
   isOpen = value
 })
-
-
-// onClickOutside($$(contextMenuRef), () => {
-//   isOpen = false
-//   emit('hide')
-// })
-
-// useContextMenuOutside($$(referenceRef), () => {
-//   isOpen = false
-//   emit('hide')
-// })
-
 
 function onCoverClick() {
   isOpen = false
@@ -70,6 +58,9 @@ function onCoverClick() {
 function matchReferenceSizeFactory() {
   return size({
     apply({rects}) {
+      if(!dropdownRef) {
+        return
+      }
       Object.assign(dropdownRef.style, {
         width: `${rects.reference.width}px`,
       })
@@ -132,11 +123,6 @@ const {floatingStyles, update} = useFloating($$(referenceRef), $$(dropdownRef), 
   whileElementsMounted: autoUpdate,
 })
 
-const dropdownStyle = $computed(() => {
-  return {
-    // background: props.isTransparent ? 'transparent' : 'hsla(0,0%,20%,1)',
-  }
-})
 
 const onOpenEvent = () => {
   if(typeof props.isOpen === 'boolean') {
@@ -188,7 +174,7 @@ defineExpose($$({
         :class="dropdownClass"
         v-if="isOpen"
         ref="dropdownRef"
-        :style="[floatingStyles, dropdownStyle]"
+        :style="[floatingStyles]"
       >
         <slot name="dropdown" :isOpen="isOpen" :close="onClose"/>
       </div>

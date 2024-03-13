@@ -7,7 +7,7 @@ import {ActionType} from '../enum/ActionType.ts'
     interface Props {
         actionTypeItems: IActionTypeItem[]
     }
-const props = defineProps<Props>()
+defineProps<Props>()
 
     interface Emits {
         (e: 'toggleAction', actionType: ActionType): void
