@@ -21,7 +21,7 @@ let selectedViewTypes = $computed<AclViewType[]>({
   },
   set(value: AclViewType[]) {
     emit('update:selectedViewTypes', value)
-  }
+  },
 })
 
 function toggleSelectedViewType(viewType: AclViewType) {
@@ -46,7 +46,7 @@ const filteredViewTypeItems = $computed(() => {
       New role
     </div>
     <div class="title add-description">Add description (optional)</div>
-      <InputComponent placeholder="Search view" v-model="search"/>
+    <InputComponent placeholder="Search view" v-model="search"/>
     <div class="title">Select views to add to that role</div>
     <div class="inside-content-wrapper">
       <CheckboxItemComponent

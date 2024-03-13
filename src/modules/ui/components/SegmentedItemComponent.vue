@@ -3,7 +3,7 @@ interface Props {
   isSelected?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
-  isSelected: false
+  isSelected: false,
 })
 </script>
 

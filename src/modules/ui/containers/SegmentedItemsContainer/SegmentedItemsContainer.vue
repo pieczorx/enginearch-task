@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import SegmentedItemsComponent from '../../components/SegmentedItemsComponent.vue'
-  import {ISegmentedItem} from './types/ISegmentedItem.ts'
-  import SegmentedItemComponent from '../../components/SegmentedItemComponent.vue'
+import SegmentedItemsComponent from '../../components/SegmentedItemsComponent.vue'
+import {ISegmentedItem} from './types/ISegmentedItem.ts'
+import SegmentedItemComponent from '../../components/SegmentedItemComponent.vue'
 
 interface Props {
   items: ISegmentedItem[]
@@ -20,7 +20,7 @@ let currentItemId = $computed({
   },
   set(value: string|number|symbol) {
     emit('update:modelValue', value)
-  }
+  },
 })
 
 function onItemClick(itemId: string|number|symbol) {
@@ -34,6 +34,7 @@ function onItemClick(itemId: string|number|symbol) {
       v-for="item in props.items"
       @click="onItemClick(item.id)"
       :isSelected="currentItemId === item.id"
+      :key="item.id"
     >
       {{item.title}}
     </SegmentedItemComponent>

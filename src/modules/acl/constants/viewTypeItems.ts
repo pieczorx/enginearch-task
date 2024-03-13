@@ -9,14 +9,14 @@ export const viewTypeItems: IViewTypeItem[] = [
     usedDataModels: [
       DataModelType.Shifts,
       DataModelType.ShiftJobs,
-    ]
+    ],
   },
   {
     viewType: AclViewType.ShiftsManager,
     title: 'Shifts Manager',
     usedDataModels: [
       DataModelType.Shifts,
-    ]
+    ],
   },
   {
     viewType: AclViewType.LivePanel,
@@ -27,7 +27,7 @@ export const viewTypeItems: IViewTypeItem[] = [
       DataModelType.Vehicles,
       DataModelType.Drivers,
       DataModelType.Stadiums,
-    ]
+    ],
   },
   {
     viewType: AclViewType.ClientCommunicationMessages,
@@ -35,13 +35,13 @@ export const viewTypeItems: IViewTypeItem[] = [
     usedDataModels: [
       DataModelType.Drivers,
       DataModelType.Vehicles,
-    ]
+    ],
   },
   {
     viewType: AclViewType.SystemNotifications,
     title: 'System Notifications',
     usedDataModels: [
       DataModelType.Stadiums,
-    ]
-  }
+    ],
+  },
 ]

@@ -1,11 +1,11 @@
 <script lang="ts">
-  export default {
-    setup() {
-      return {
+export default {
+  setup() {
+    return {
 
-      }
     }
-  }
+  },
+}
 </script>
 
 <template>

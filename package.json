@@ -2,11 +2,12 @@
   "name": "enginearch-task",
   "private": true,
   "version": "0.0.1",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --ext .js,.vue,.ts"
   },
   "dependencies": {
     "@activeadmin/activeadmin": "^2.11.2",
@@ -87,14 +88,16 @@
     "@prettier/plugin-pug": "^1.20.1",
     "@rollup/plugin-inject": "^5.0.3",
     "@rollup/plugin-replace": "^5.0.2",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@vue/eslint-config-prettier": "^7.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/language-plugin-pug": "^1.8.27",
     "cspell": "^5.19.5",
-    "eslint": "^8.12.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
+    "eslint-plugin-unused-imports": "^3.1.0",
     "eslint-plugin-vue": "^8.6.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.7",

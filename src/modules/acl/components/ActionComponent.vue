@@ -5,7 +5,7 @@ interface Props {
 const props = defineProps<Props>()
 
 const color = $computed(() => {
-    return props.color
+  return props.color
 })
 </script>
 

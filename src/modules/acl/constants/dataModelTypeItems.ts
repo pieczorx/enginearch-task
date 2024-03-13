@@ -9,14 +9,14 @@ export const dataModelTypeItems: IDataModelTypeItem[] = [
     availableActionTypes: [
       ActionType.Create,
       ActionType.Read,
-    ]
+    ],
   },
   {
     dataModelType: DataModelType.ShiftJobs,
     title: 'Shift Jobs',
     availableActionTypes: [
       ActionType.Read,
-    ]
+    ],
   },
   {
     dataModelType: DataModelType.Vehicles,
@@ -27,7 +27,7 @@ export const dataModelTypeItems: IDataModelTypeItem[] = [
       ActionType.Remove,
       ActionType.Update,
       ActionType.DoSomeMagic,
-    ]
+    ],
   },
   {
     dataModelType: DataModelType.Drivers,
@@ -36,7 +36,7 @@ export const dataModelTypeItems: IDataModelTypeItem[] = [
       ActionType.Create,
       ActionType.Read,
       ActionType.DoSomeMagic,
-    ]
+    ],
   },
   {
     dataModelType: DataModelType.Stadiums,
@@ -47,6 +47,6 @@ export const dataModelTypeItems: IDataModelTypeItem[] = [
       ActionType.Remove,
       ActionType.Update,
       ActionType.DoSomeMagic,
-    ]
-  }
+    ],
+  },
 ]

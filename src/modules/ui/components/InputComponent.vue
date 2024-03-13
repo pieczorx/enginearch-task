@@ -4,25 +4,25 @@
     type?: string
     modelValue?: string
   }
-  const props = withDefaults(defineProps<Props>(), {
-    placeholder: '',
-    type: 'text',
-    modelValue: ''
-  })
+const props = withDefaults(defineProps<Props>(), {
+  placeholder: '',
+  type: 'text',
+  modelValue: '',
+})
 
   interface Emits {
     (e: 'update:modelValue', value: string): void
   }
-  const emit = defineEmits<Emits>()
+const emit = defineEmits<Emits>()
 
-  const valueModel = $computed({
-      get() {
-      return props.modelValue
-    },
-    set(value: string) {
-      emit('update:modelValue', value)
-    }
-  })
+const valueModel = $computed({
+  get() {
+    return props.modelValue
+  },
+  set(value: string) {
+    emit('update:modelValue', value)
+  },
+})
 </script>
 
 <template>

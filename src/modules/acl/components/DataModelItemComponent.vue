@@ -1,13 +1,11 @@
 <script setup lang="ts">
-  import {DataModelType} from '../enum/DataModelType.ts'
-  import {IDataModelTypeItem} from '../types/IDataModelTypeItem.ts'
-  import {dataModelTypeItems} from '../constants/dataModelTypeItems.ts'
-  import {ActionType} from '../enum/ActionType.ts'
-  import ActionComponent from './ActionComponent.vue'
-  import {IActionTypeItem} from '../types/IActionTypeItem.ts'
-  import {actionTypeItems} from '../constants/actionTypeItems.ts'
-  import DropdownComponent from '../../ui/components/DropdownComponent.vue'
-  import ActionsComponent from './ActionsComponent.vue'
+import {DataModelType} from '../enum/DataModelType.ts'
+import {IDataModelTypeItem} from '../types/IDataModelTypeItem.ts'
+import {dataModelTypeItems} from '../constants/dataModelTypeItems.ts'
+import {ActionType} from '../enum/ActionType.ts'
+import {IActionTypeItem} from '../types/IActionTypeItem.ts'
+import {actionTypeItems} from '../constants/actionTypeItems.ts'
+import ActionsComponent from './ActionsComponent.vue'
 
 interface Props {
   dataModelType: DataModelType
@@ -30,30 +28,30 @@ const titles = [
   'Data scope',
 ]
 
-  const dataModelTypeItem = $computed<IDataModelTypeItem>(() => {
-    return dataModelTypeItems.find((item) => item.dataModelType === props.dataModelType) as IDataModelTypeItem
-  })
-  function toggleAction(actionType: ActionType) {
-      emit('toggleAction', actionType)
-  }
+const dataModelTypeItem = $computed<IDataModelTypeItem>(() => {
+  return dataModelTypeItems.find((item) => item.dataModelType === props.dataModelType) as IDataModelTypeItem
+})
+function toggleAction(actionType: ActionType) {
+  emit('toggleAction', actionType)
+}
 
-  const allActionTypeItems = $computed<IActionTypeItem[]>(() => {
-    return actionTypeItems.filter(actionTypeItem => {
-        return dataModelTypeItem.availableActionTypes.includes(actionTypeItem.actionType)
-    })
+const allActionTypeItems = $computed<IActionTypeItem[]>(() => {
+  return actionTypeItems.filter(actionTypeItem => {
+    return dataModelTypeItem.availableActionTypes.includes(actionTypeItem.actionType)
   })
+})
 
-  const enabledActionTypeItems = $computed<IActionTypeItem[]>(() => {
-    return allActionTypeItems.filter(actionTypeItem => {
-        return props.enabledActions.includes(actionTypeItem.actionType)
-    })
+const enabledActionTypeItems = $computed<IActionTypeItem[]>(() => {
+  return allActionTypeItems.filter(actionTypeItem => {
+    return props.enabledActions.includes(actionTypeItem.actionType)
   })
+})
 
-    const notEnabledActionTypeItems = $computed<IActionTypeItem[]>(() => {
-      return allActionTypeItems.filter(actionTypeItem => {
-          return !props.enabledActions.includes(actionTypeItem.actionType)
-      })
-    })
+const notEnabledActionTypeItems = $computed<IActionTypeItem[]>(() => {
+  return allActionTypeItems.filter(actionTypeItem => {
+    return !props.enabledActions.includes(actionTypeItem.actionType)
+  })
+})
 </script>
 
 
@@ -63,10 +61,10 @@ const titles = [
     <div class="cell value">{{dataModelTypeItem.title}}</div>
     <div class="cell value editable">Not implemented</div>
     <div class="cell value editable">
-        <ActionsComponent :action-type-items="enabledActionTypeItems" @toggleAction="toggleAction"/>
+      <ActionsComponent :actionTypeItems="enabledActionTypeItems" @toggleAction="toggleAction"/>
     </div>
     <div class="cell value editable actions">
-        <ActionsComponent :action-type-items="notEnabledActionTypeItems" @toggleAction="toggleAction"/>
+      <ActionsComponent :actionTypeItems="notEnabledActionTypeItems" @toggleAction="toggleAction"/>
     </div>
     <div class="cell value editable">Not implemented</div>
   </div>

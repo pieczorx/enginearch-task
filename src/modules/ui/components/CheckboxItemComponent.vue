@@ -6,7 +6,7 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  isChecked: false
+  isChecked: false,
 })
 </script>
 

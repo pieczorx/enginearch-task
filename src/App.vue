@@ -3,13 +3,13 @@ import RoleConfigurationPage from './pages/RoleConfigurationPage.vue'
 
 export default {
   components: {
-    RoleConfigurationPage
+    RoleConfigurationPage,
   },
 }
 </script>
 
 <template>
-    <div id="teleported"/>
+  <div id="teleported"/>
   <RoleConfigurationPage/>
 </template>
 

@@ -1,53 +1,53 @@
 <script setup lang="ts">
-    import {IActionTypeItem} from '../types/IActionTypeItem.ts'
-    import DropdownComponent from '../../ui/components/DropdownComponent.vue'
-    import ActionComponent from './ActionComponent.vue'
-    import {ActionType} from '../enum/ActionType.ts'
+import {IActionTypeItem} from '../types/IActionTypeItem.ts'
+import DropdownComponent from '../../ui/components/DropdownComponent.vue'
+import ActionComponent from './ActionComponent.vue'
+import {ActionType} from '../enum/ActionType.ts'
 
     interface Props {
         actionTypeItems: IActionTypeItem[]
     }
-    const props = defineProps<Props>()
+const props = defineProps<Props>()
 
     interface Emits {
         (e: 'toggleAction', actionType: ActionType): void
     }
-    const emit = defineEmits<Emits>()
+const emit = defineEmits<Emits>()
 
-    function toggleAction(actionType: ActionType) {
-        emit('toggleAction', actionType)
-    }
+function toggleAction(actionType: ActionType) {
+  emit('toggleAction', actionType)
+}
 </script>
 
 <template>
-    <div class="empty" v-if="!actionTypeItems.length">
-        -
-    </div>
-    <DropdownComponent v-else-if="actionTypeItems.length >= 3">
-        <div class="more-items">{{actionTypeItems.length}}</div>
-        <template #dropdown>
-            <div class="actions">
-                <ActionComponent
-                        v-for="actionTypeItem in actionTypeItems"
-                        :key="actionTypeItem.actionType"
-                        :color="actionTypeItem.color"
-                        @click="toggleAction(actionTypeItem.actionType)"
-                >
-                    {{actionTypeItem.title}}
-                </ActionComponent>
-            </div>
-        </template>
-    </DropdownComponent>
-    <div class="actions" v-else>
+  <div class="empty" v-if="!actionTypeItems.length">
+    -
+  </div>
+  <DropdownComponent v-else-if="actionTypeItems.length >= 3">
+    <div class="more-items">{{actionTypeItems.length}}</div>
+    <template #dropdown>
+      <div class="actions">
         <ActionComponent
-                v-for="actionTypeItem in actionTypeItems"
-                :key="actionTypeItem.actionType"
-                :color="actionTypeItem.color"
-                @click="toggleAction(actionTypeItem.actionType)"
+          v-for="actionTypeItem in actionTypeItems"
+          :key="actionTypeItem.actionType"
+          :color="actionTypeItem.color"
+          @click="toggleAction(actionTypeItem.actionType)"
         >
-            {{actionTypeItem.title}}
+          {{actionTypeItem.title}}
         </ActionComponent>
-    </div>
+      </div>
+    </template>
+  </DropdownComponent>
+  <div class="actions" v-else>
+    <ActionComponent
+      v-for="actionTypeItem in actionTypeItems"
+      :key="actionTypeItem.actionType"
+      :color="actionTypeItem.color"
+      @click="toggleAction(actionTypeItem.actionType)"
+    >
+      {{actionTypeItem.title}}
+    </ActionComponent>
+  </div>
 </template>
 
 <style scoped lang="scss">

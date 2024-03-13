@@ -5,26 +5,26 @@ export const actionTypeItems: IActionTypeItem[] = [
   {
     actionType: ActionType.Create,
     title: 'Create',
-    color: '#6FCF97'
+    color: '#6FCF97',
   },
   {
     actionType: ActionType.Read,
     title: 'Read',
-    color: '#B5B9BB'
+    color: '#B5B9BB',
   },
   {
     actionType: ActionType.Update,
     title: 'Update',
-    color: '#F2C94C'
+    color: '#F2C94C',
   },
   {
     actionType: ActionType.Remove,
     title: 'Remove',
-    color: '#EB5757'
+    color: '#EB5757',
   },
   {
     actionType: ActionType.DoSomeMagic,
     title: 'DoSomeMagic',
-    color: '#326295'
-  }
+    color: '#326295',
+  },
 ]

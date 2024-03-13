@@ -11,7 +11,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   visibleModelTypes() {
     return []
-  }
+  },
 })
 
 interface Emits {
@@ -23,18 +23,18 @@ const mappedModelTypes = $computed(() => {
   return props.visibleModelTypes.map((dataModelType) => {
     return {
       dataModelType,
-      enabledActions: props.enabledActionsByDataModelTypeMap.get(dataModelType) || []
+      enabledActions: props.enabledActionsByDataModelTypeMap.get(dataModelType) || [],
     }
   })
 })
 
 let enabledActionsByDataModelTypeMapModel = $computed({
-    get() {
-        return props.enabledActionsByDataModelTypeMap
-    },
-    set(value: IActionTypesByDataModelTypeMap) {
-        emit('update:enabledActionsByDataModelTypeMap', value)
-    }
+  get() {
+    return props.enabledActionsByDataModelTypeMap
+  },
+  set(value: IActionTypesByDataModelTypeMap) {
+    emit('update:enabledActionsByDataModelTypeMap', value)
+  },
 })
 
 function toggleAction(dataModelType: DataModelType, action: ActionType) {
@@ -52,22 +52,20 @@ function toggleAction(dataModelType: DataModelType, action: ActionType) {
 
 
 <template>
-    <div class="data-model-items-wrapper" v-if="visibleModelTypes.length">
-      <div class="data-model-items" >
-          <DataModelItemComponent
-            v-for="mappedModelType in mappedModelTypes"
-            :key="mappedModelType.dataModelType"
-            :dataModelType="mappedModelType.dataModelType"
-            :enabledActions="mappedModelType.enabledActions"
-            @toggleAction="toggleAction(mappedModelType.dataModelType, $event)"
-        />
-      </div>
+  <div class="data-model-items-wrapper" v-if="visibleModelTypes.length">
+    <div class="data-model-items">
+      <DataModelItemComponent
+        v-for="mappedModelType in mappedModelTypes"
+        :key="mappedModelType.dataModelType"
+        :dataModelType="mappedModelType.dataModelType"
+        :enabledActions="mappedModelType.enabledActions"
+        @toggleAction="toggleAction(mappedModelType.dataModelType, $event)"
+      />
     </div>
+  </div>
 
   <div class="empty" v-else>
-    <div class="thumbnail">
-
-    </div>
+    <div class="thumbnail"/>
     <div class="title">Create new role</div>
     <div class="description">Start selecting Views to define<br/>access to Operational Data</div>
   </div>

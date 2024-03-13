@@ -2,15 +2,13 @@
   interface Props {
     isChecked?: boolean
   }
-  const props = withDefaults(defineProps<Props>(), {
-    isChecked: false
-  })
+const props = withDefaults(defineProps<Props>(), {
+  isChecked: false,
+})
 </script>
 
 <template>
-  <div class="checkbox" :class="{'is-checked': props.isChecked}">
-
-  </div>
+  <div class="checkbox" :class="{'is-checked': props.isChecked}"/>
 </template>
 
 <style scoped lang="scss">
