@@ -3,7 +3,7 @@
 ## Prerequisites
 - Node.js
 - Yarn
-- 
+
 ## Running the application
 1. Clone the repository to your local machine
 2. Open the project in your preferred IDE
@@ -16,3 +16,4 @@ yarn
 ```bash
 yarn dev
 ```
+6. Check the console for port that was generated open `http://localhost:PORT` in your browser
