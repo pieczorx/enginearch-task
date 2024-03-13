@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {viewTypeItems} from '../constants/viewTypeItems'
-import ContainerComponent from './ContainerComponent.vue'
 import InputComponent from '../../ui/components/InputComponent.vue'
-import CheckboxItemComponent from './CheckboxItemComponent.vue'
 import {AclViewType} from '../enum/AclViewType'
+import CheckboxItemComponent from '../../ui/components/CheckboxItemComponent.vue'
+import ContainerComponent from '../../ui/components/ContainerComponent.vue'
 
 interface Props {
   selectedViewTypes: AclViewType[]
