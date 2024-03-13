@@ -6,6 +6,8 @@
   import ActionComponent from './ActionComponent.vue'
   import {IActionTypeItem} from '../types/IActionTypeItem.ts'
   import {actionTypeItems} from '../constants/actionTypeItems.ts'
+  import DropdownComponent from '../../ui/components/DropdownComponent.vue'
+  import ActionsComponent from './ActionsComponent.vue'
 
 interface Props {
   dataModelType: DataModelType
@@ -60,25 +62,11 @@ const titles = [
     <div class="cell header" v-for="(title, i) in titles" :key="i">{{title}}</div>
     <div class="cell value">{{dataModelTypeItem.title}}</div>
     <div class="cell value editable">Not implemented</div>
-    <div class="cell value editable actions">
-        <ActionComponent
-            v-for="actionTypeItem in enabledActionTypeItems"
-            :key="actionTypeItem.actionType"
-            :color="actionTypeItem.color"
-            @click="toggleAction(actionTypeItem.actionType)"
-        >
-            {{actionTypeItem.title}}
-        </ActionComponent>
+    <div class="cell value editable">
+        <ActionsComponent :action-type-items="enabledActionTypeItems" @toggleAction="toggleAction"/>
     </div>
     <div class="cell value editable actions">
-        <ActionComponent
-                v-for="actionTypeItem in notEnabledActionTypeItems"
-                :key="actionTypeItem.actionType"
-                :color="actionTypeItem.color"
-                @click="toggleAction(actionTypeItem.actionType)"
-        >
-            {{actionTypeItem.title}}
-        </ActionComponent>
+        <ActionsComponent :action-type-items="notEnabledActionTypeItems" @toggleAction="toggleAction"/>
     </div>
     <div class="cell value editable">Not implemented</div>
   </div>
@@ -108,13 +96,6 @@ const titles = [
 
     &.editable {
       background: #fff;
-    }
-
-    &.actions {
-      display: grid;
-      align-content: flex-start;
-      padding: 8px;
-      gap: 4px;
     }
   }
 </style>

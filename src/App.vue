@@ -9,6 +9,7 @@ export default {
 </script>
 
 <template>
+    <div id="teleported"/>
   <RoleConfigurationPage/>
 </template>
 
