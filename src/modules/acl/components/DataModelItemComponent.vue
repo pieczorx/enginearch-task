@@ -12,7 +12,7 @@ interface Props {
   enabledActions: ActionType[]
 }
 const props = withDefaults(defineProps<Props>(), {
-  isChecked: false
+
 })
 
 interface Emits {
@@ -29,7 +29,7 @@ const titles = [
 ]
 
   const dataModelTypeItem = $computed<IDataModelTypeItem>(() => {
-    return dataModelTypeItems.find((item) => item.dataModelType === props.dataModelType)
+    return dataModelTypeItems.find((item) => item.dataModelType === props.dataModelType) as IDataModelTypeItem
   })
   function toggleAction(actionType: ActionType) {
       emit('toggleAction', actionType)

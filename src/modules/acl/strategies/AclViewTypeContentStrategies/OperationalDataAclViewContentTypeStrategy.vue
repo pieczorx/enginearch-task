@@ -2,6 +2,7 @@
 import {DataModelType} from '../../enum/DataModelType'
 import DataModelItemComponent from '../../components/DataModelItemComponent.vue'
 import {IActionTypesByDataModelTypeMap} from '../../types/IActionTypesByDataModelTypeMap.ts'
+import {ActionType} from '../../enum/ActionType.ts'
 
 interface Props {
   visibleModelTypes?: DataModelType[]
@@ -36,7 +37,7 @@ let enabledActionsByDataModelTypeMapModel = $computed({
     }
 })
 
-function toggleAction(dataModelType: DataModelType, action: string) {
+function toggleAction(dataModelType: DataModelType, action: ActionType) {
   const newMap = new Map(enabledActionsByDataModelTypeMapModel)
   const enabledActions = enabledActionsByDataModelTypeMapModel.get(dataModelType) || []
   if (enabledActions.includes(action)) {

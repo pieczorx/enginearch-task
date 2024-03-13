@@ -24,7 +24,7 @@ const strategyMap = new Map<AclSettingsViewType, Component>([
   [AclSettingsViewType.StandardLibrary, StandardLibraryAclViewTypeStrategy],
   [AclSettingsViewType.OperationalData, OperationalDataAclViewTypeStrategy],
 ])
-const strategyComponent = $computed<Component>(() => {
+const strategyComponent = $computed(() => {
 return strategyMap.get(props.aclViewType)
 })
 

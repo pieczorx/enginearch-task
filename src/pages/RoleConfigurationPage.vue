@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import SegmentedItemsContainer from '../modules/ui/containers/SegmentedItemsContainer/SegmentedItemsContainer.vue'
-import ContainerComponent from '../modules/acl/components/ContainerComponent.vue'
 import {AclSettingsViewType} from '../modules/acl/enum/AclSettingsViewType.ts'
 import AclViewTypeContentFactory from '../modules/acl/factories/AclViewTypeContentFactory.vue'
 import InputComponent from '../modules/ui/components/InputComponent.vue'
@@ -45,7 +44,7 @@ const search = $ref('')
 const visibleModelItems = $computed<IDataModelTypeItem[]>(() => {
     return visibleModelTypes.map(modelType => {
         return dataModelTypeItems.find((item) => item.dataModelType === modelType)
-    })
+    }) as IDataModelTypeItem[]
 })
 const filteredVisibleModelTypes = $computed<DataModelType[]>(() => {
   return visibleModelItems.filter((item) => {
